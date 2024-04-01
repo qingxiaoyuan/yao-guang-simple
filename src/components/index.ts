@@ -8,5 +8,6 @@
 import Footer from './Footer';
 import { Question, SelectLang } from './RightContent';
 import { AvatarDropdown, AvatarName } from './RightContent/AvatarDropdown';
+import { ColorButton } from './ColorButton';
 
-export { Footer, Question, SelectLang, AvatarDropdown, AvatarName };
+export { Footer, Question, SelectLang, AvatarDropdown, AvatarName, ColorButton };

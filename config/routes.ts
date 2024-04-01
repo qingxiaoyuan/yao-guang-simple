@@ -12,15 +12,10 @@
  */
 export default [
   {
-    path: '/user',
+    path: '/login',
     layout: false,
-    routes: [
-      {
-        name: 'login',
-        path: '/user/login',
-        component: './User/Login',
-      },
-    ],
+    name: '登录',
+    component: './Login',
   },
   {
     path: '/welcome',
@@ -29,27 +24,21 @@ export default [
     component: './Welcome',
   },
   {
-    path: '/admin',
-    name: '管理',
+    path: '/system',
+    name: '系统管理',
     icon: 'crown',
-    access: 'canAdmin',
     routes: [
       {
-        path: '/admin',
-        redirect: '/admin/sub-page',
-      },
-      {
-        path: '/admin/sub-page',
+        path: '/system/sub-page',
         name: '二级',
         component: './Admin',
       },
+      {
+        path: '/system/user-list',
+        name: '用户列表',
+        component: './Manage/UserList',
+      },
     ],
-  },
-  {
-    name: '列表',
-    icon: 'table',
-    path: '/list',
-    component: './Welcome',
   },
   {
     path: '/',
@@ -58,6 +47,6 @@ export default [
   {
     path: '*',
     layout: false,
-    component: './404',
+    component: './ErrorPage/404',
   },
 ];

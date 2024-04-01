@@ -2,12 +2,12 @@ import { Footer } from '@/components';
 import { login } from '@/services/ant-design-pro/api';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
-import { Helmet, SelectLang, history, useModel } from '@umijs/max';
+import { Helmet, history, useModel } from '@umijs/max';
 import { Alert, message } from 'antd';
 import { createStyles } from 'antd-style';
 import React, { useState } from 'react';
 import { flushSync } from 'react-dom';
-import Settings from '../../../../config/defaultSettings';
+import Settings from '../../../config/defaultSettings';
 
 const useStyles = createStyles(({ token }) => {
   return {
@@ -45,15 +45,6 @@ const useStyles = createStyles(({ token }) => {
   };
 });
 
-const Lang = () => {
-  const { styles } = useStyles();
-
-  return (
-    <div className={styles.lang} data-lang>
-      {SelectLang && <SelectLang />}
-    </div>
-  );
-};
 
 const LoginMessage: React.FC<{
   content: string;

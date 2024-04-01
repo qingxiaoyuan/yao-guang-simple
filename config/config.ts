@@ -78,7 +78,7 @@ export default defineConfig({
   title: 'Yao Guang',
   favicons: ['/yaoguang-logo.png'],
   layout: {
-    locale: true,
+    locale: false,
     ...defaultSettings,
   },
   /**

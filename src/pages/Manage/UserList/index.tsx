@@ -68,9 +68,9 @@ const UserList: React.FC = () => {
         <Col span={24}>
           <Card bordered={false}>
             <Flex wrap="wrap" gap="small" style={{ marginBottom: 16 }}>
-              <ColorButton type="primary">新增</ColorButton>
-              <ColorButton type="primary" color='#73d13d'>修改</ColorButton>
-              <ColorButton type="primary" color='#ff4d4f'>删除</ColorButton>
+              <ColorButton color='#4892f7'>新增</ColorButton>
+              <ColorButton color='#73d13d'>修改</ColorButton>
+              <ColorButton color='#ff4d4f'>删除</ColorButton>
             </Flex>
             <Table rowKey="code" columns={columns} dataSource={userList} />
           </Card>

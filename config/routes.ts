@@ -29,14 +29,21 @@ export default [
     icon: 'crown',
     routes: [
       {
-        path: '/system/sub-page',
-        name: '二级',
-        component: './Admin',
-      },
-      {
         path: '/system/user-list',
         name: '用户列表',
         component: './Manage/UserList',
+      },
+    ],
+  },
+  {
+    path: '/tool',
+    name: '快捷工具',
+    icon: 'toolOutlined',
+    routes: [
+      {
+        path: '/tool/virtually-app',
+        name: '虚拟App',
+        component: './Tool/VirtuallyApp',
       },
     ],
   },

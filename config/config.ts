@@ -134,4 +134,8 @@ export default defineConfig({
   },
   esbuildMinifyIIFE: true,
   requestRecord: {},
+  cssLoaderModules: {
+    // 配置驼峰式使用
+    exportLocalsConvention: 'camelCase',
+  }  
 });

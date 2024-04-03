@@ -42,7 +42,7 @@ export default [
     routes: [
       {
         path: '/tool/virtually-app',
-        name: '虚拟App',
+        name: '模拟App',
         component: './Tool/VirtuallyApp',
       },
     ],

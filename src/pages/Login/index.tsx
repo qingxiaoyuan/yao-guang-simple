@@ -118,7 +118,7 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" src="/yaoguang-logo.png" />}
+          logo={<img alt="logo" src='./yaoguang-logo.png' />}
           title="Yao Guang"
           subTitle={'登陆后使用更多功能'}
           initialValues={{

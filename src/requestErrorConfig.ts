@@ -2,6 +2,8 @@
 import type { RequestConfig } from '@umijs/max';
 import { message, notification } from 'antd';
 
+const SERVER_ADDRESS = 'http://192.168.31.129:8080';
+
 // 错误处理方案： 错误类型
 enum ErrorShowType {
   SILENT = 0,
@@ -89,7 +91,22 @@ export const errorConfig: RequestConfig = {
   requestInterceptors: [
     (config: RequestOptions) => {
       // 拦截请求配置，进行个性化处理。
-      return { ...config };
+      let { url, headers } = config;
+      if (!url?.includes('http')) {
+        // 所有系统内的请求，都加上固定的地址
+        url = `${SERVER_ADDRESS}${url}`;
+      }
+      // 除了login,都加上token
+      if (!url.includes('login')) {
+        if (headers) {
+          headers.Authorization = localStorage.getItem('Authorization') ?? '';
+        } else {
+          headers = {
+            Authorization: localStorage.getItem('Authorization') ?? '',
+          };
+        }
+      }
+      return { ...config, url, headers };
     },
   ],
 

@@ -6,6 +6,7 @@ import { history } from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
 import { errorConfig } from './requestErrorConfig';
 import React from 'react';
+import { getUserInfo } from './pages/Login/sevices';
 
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -21,10 +22,21 @@ export async function getInitialState(): Promise<{
   fetchUserInfo?: () => Promise<API.CurrentUser | undefined>;
 }> {
   const fetchUserInfo = async () => {
-    // 暂时让他变成记忆登录吧
-    return {
-      name: '游客',
+    let userInfo = undefined;
+    try {
+      userInfo = await getUserInfo();
+    } catch {
+      userInfo = undefined;
+    };
+    
+    if (userInfo?.code === 200) {
+      return {
+        ...userInfo?.data?.user,
+        permissions: userInfo?.data?.permissions ?? [],
+        roles: userInfo?.data?.roles ?? [],
+      };
     }
+    return undefined;
   };
   // 如果不是登录页面，执行
   const { location } = history;
@@ -38,14 +50,16 @@ export async function getInitialState(): Promise<{
   }
   return {
     fetchUserInfo,
+    currentUser: undefined,
     settings: defaultSettings as Partial<LayoutSettings>,
   };
 }
 
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
+  console.log(initialState?.currentUser?.avatar);
   return {
     avatarProps: {
-      src: initialState?.currentUser?.avatar ?? './img/system/default-avatar.png',
+      src: initialState?.currentUser?.avatar || './img/system/default-avatar.png',
       title: <AvatarName />,
       render: (_, avatarChildren) => {
         return <AvatarDropdown>{avatarChildren}</AvatarDropdown>;

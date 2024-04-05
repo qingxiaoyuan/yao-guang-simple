@@ -21,30 +21,43 @@ declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false;
 
 declare namespace API {
   type CurrentUser = {
-    name?: string;
+    /** 是否为超级管理员 */
+    admin?: boolean;
+    /** 头像 */
     avatar?: string;
-    userid?: string;
+    /** 部门id */
+    deptId?: number;
+    /** 部门信息 */
+    dept?: {[key: string]: string};
     email?: string;
-    signature?: string;
-    title?: string;
-    group?: string;
-    tags?: { key?: string; label?: string }[];
-    notifyCount?: number;
-    unreadCount?: number;
-    country?: string;
-    access?: string;
-    geographic?: {
-      province?: { label?: string; key?: string };
-      city?: { label?: string; key?: string };
-    };
-    address?: string;
-    phone?: string;
+    /** 昵称 */
+    nickName?: string;
+    phonenumber?: string;
+    /** 岗位id */
+    postIds?: number;
+    /** 备注 */
+    remark?: string;
+    /** 角色id */
+    roleId?: number;
+    /** 性别 0=男 1=女 */
+    sex?: string;
+    /** 账号状态 0=正常 1=禁用 */
+    status?: string;
+    /** 用户id */
+    userId?: string;
+    /** 用户名/登录账号 */
+    userName?: string;
+    /** 权限 */
+    permissions?: Array<string>;
+    /** 角色 */
+    roles?: Array<string>;
   };
 
   type LoginResult = {
     status?: string;
     type?: string;
     currentAuthority?: string;
+    msg?: string;
   };
 
   type PageParams = {

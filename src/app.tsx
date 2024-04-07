@@ -6,7 +6,9 @@ import { history } from '@umijs/max';
 import defaultSettings from '../config/defaultSettings';
 import { errorConfig } from './requestErrorConfig';
 import React from 'react';
-import { getUserInfo } from './pages/Login/sevices';
+import { getRouters, getUserInfo } from './pages/Login/sevices';
+import { MenuDataItem } from '@umijs/route-utils';
+import { fomartRouter, getRoutersList } from './utils/routerUtils';
 
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -56,7 +58,6 @@ export async function getInitialState(): Promise<{
 }
 
 export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) => {
-  console.log(initialState?.currentUser?.avatar);
   return {
     avatarProps: {
       src: initialState?.currentUser?.avatar || './img/system/default-avatar.png',
@@ -64,6 +65,26 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       render: (_, avatarChildren) => {
         return <AvatarDropdown>{avatarChildren}</AvatarDropdown>;
       },
+    },
+    menu: {
+      locale: false,
+      request: async (params, defaultMenuData) => {
+        let userRouter: MenuDataItem[] = [];
+        try {
+          const getRouteresResult = await getRouters();
+          if (getRouteresResult.code === 200) {
+            const serverRouterList = getRoutersList(getRouteresResult.data);
+            userRouter = fomartRouter(serverRouterList, defaultMenuData);
+          } else {
+            userRouter = fomartRouter([], defaultMenuData);
+          }
+          
+        } catch {
+          userRouter = fomartRouter([], defaultMenuData);
+        }
+        
+        return [...userRouter];
+      }
     },
     footerRender: () => <Footer />,
     menuHeaderRender: undefined,

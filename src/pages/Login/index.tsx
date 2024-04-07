@@ -45,7 +45,6 @@ const useStyles = createStyles(({ token }) => {
   };
 });
 
-
 const LoginMessage: React.FC<{
   content: string;
 }> = ({ content }) => {
@@ -84,8 +83,6 @@ const Login: React.FC = () => {
       const { code, msg, token } = await login(loginParams);
       if (code === 200) {
         localStorage.setItem('Authorization', token ?? '');
-        const defaultLoginSuccessMessage = '登录成功！';
-        message.success(defaultLoginSuccessMessage);
         await fetchUserInfo();
         const urlParams = new URL(window.location.href).searchParams;
         history.push(urlParams.get('redirect') || '/');
@@ -121,7 +118,7 @@ const Login: React.FC = () => {
             minWidth: 280,
             maxWidth: '75vw',
           }}
-          logo={<img alt="logo" src='./yaoguang-logo.png' />}
+          logo={<img alt="logo" src="./yaoguang-logo.png" />}
           title="Yao Guang"
           subTitle={'登陆后使用更多功能'}
           initialValues={{

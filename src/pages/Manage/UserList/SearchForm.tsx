@@ -14,13 +14,18 @@ export const SearchForm: React.FC<SearchFormProps> = (props) => {
     <Form form={form} name="advanced_search" onFinish={onSubmit}>
       <Row gutter={24}>
         <Col span={8}>
-          <Form.Item key={'username'} name="username" label="编号">
-            <Input />
+          <Form.Item key={'userId'} name="userId" label="编号">
+            <Input placeholder='请输入编号' />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+          <Form.Item key={'userName'} name="userName" label="用户名">
+            <Input placeholder='请输入用户名' />
           </Form.Item>
         </Col>
         <Col span={8}>
           <Form.Item key={'status'} name="status" label="状态">
-            <Select>
+            <Select placeholder="请选择">
               <Select.Option value="0">正常</Select.Option>
               <Select.Option value="1">禁用</Select.Option>
             </Select>

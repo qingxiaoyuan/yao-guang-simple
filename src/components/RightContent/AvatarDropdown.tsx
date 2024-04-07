@@ -54,7 +54,6 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ children }) =
           toLogin();
           return;
       }
-      
     },
     [setInitialState],
   );

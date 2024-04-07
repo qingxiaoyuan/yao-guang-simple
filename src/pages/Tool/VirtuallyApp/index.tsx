@@ -35,7 +35,6 @@ const VirtuallApp: React.FC = () => {
       manual: true,
       formatResult: (result) => result,
       onSuccess: (data: { ucode: string; uname: string }[]) => {
-        console.log(data);
         setUcodeOptions(
           data.map((item) => ({
             label: `(${item.ucode ?? ''})${item.uname}`,

@@ -1,6 +1,16 @@
 export interface UserType {
-  code?: string;
-  name?: string;
-  age?: string;
-  address?: string;
+  userId?: string;
+  nickName?: string;
+  status?: string;
+  createTime?: string;
+  userName?: string;
+  remark?: string;
+  roleId?: string;
+}
+
+export interface GetUserParmas extends API.PageParams {
+  userId?: string;
+  nickName?: string;
+  status?: string;
+  userName?: string;
 }

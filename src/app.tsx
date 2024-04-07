@@ -9,6 +9,7 @@ import React from 'react';
 import { getRouters, getUserInfo } from './pages/Login/sevices';
 import { MenuDataItem } from '@umijs/route-utils';
 import { fomartRouter, getRoutersList } from './utils/routerUtils';
+import { App } from 'antd';
 
 
 const isDev = process.env.NODE_ENV === 'development';
@@ -94,7 +95,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     childrenRender: (children) => {
       // if (initialState?.loading) return <PageLoading />;
       return (
-        <>
+        <App>
           {children}
           {isDev && (
             <SettingDrawer
@@ -109,7 +110,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
               }}
             />
           )}
-        </>
+        </App>
       );
     },
     ...initialState?.settings,

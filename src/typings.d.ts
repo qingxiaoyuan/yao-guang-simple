@@ -61,7 +61,7 @@ declare namespace API {
   };
 
   type PageParams = {
-    current?: number;
+    pageIndex?: number;
     pageSize?: number;
   };
 
@@ -91,6 +91,7 @@ declare namespace API {
     code?: number;
     status?: string;
   };
+
 
   type LoginParams = {
     username?: string;

@@ -36,6 +36,18 @@ export default [
     ],
   },
   {
+    path: '/monitor',
+    name: '系统监控',
+    icon: 'desktop',
+    routes: [
+      {
+        path: '/monitor/job',
+        name: '定时任务',
+        component: './Monitor/Job',
+      },
+    ],
+  },
+  {
     path: '/tool',
     name: '快捷工具',
     icon: 'toolOutlined',

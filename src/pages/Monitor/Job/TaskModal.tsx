@@ -1,5 +1,6 @@
-import { App, Button, Col, Form, Input, Modal, Radio, Row, Select } from 'antd';
+import { App, Col, Form, Input, Modal, Radio, Row, Select } from 'antd';
 import React, { useEffect } from 'react';
+import { CronSelect } from 'react-cron-select';
 import { addTask, editTask, getTaskDetail } from './services';
 
 interface TaskModalProps {
@@ -110,21 +111,16 @@ export const TaskModal: React.FC<TaskModalProps> = (props) => {
               </Select>
             </Form.Item>
           </Col>
-          <Col span={17}>
+          <Col span={24}>
             <Form.Item
               name="cronExpression"
               label="Cron表达式"
-              labelCol={{ span: 7 }}
+              labelCol={{ span: 5 }}
               required
               rules={[{ required: true }]}
             >
-              <Input placeholder="请输入Cron表达式" />
+              <CronSelect inputProps={{ placeholder: "请输入!" }} />
             </Form.Item>
-          </Col>
-          <Col span={4}>
-            <Button onClick={() => {}}>
-              生成表达式
-            </Button>
           </Col>
           <Col span={12}>
             <Form.Item name="concurrent" label="是否并发" labelCol={{ span: 10 }}>
@@ -134,14 +130,16 @@ export const TaskModal: React.FC<TaskModalProps> = (props) => {
               </Radio.Group>
             </Form.Item>
           </Col>
-          {currentTaskId !== 'add' && <Col span={12}>
-            <Form.Item name="status" label="状态" labelCol={{ span: 10 }}>
-              <Radio.Group>
-                <Radio.Button value="0">启用</Radio.Button>
-                <Radio.Button value="1">停用</Radio.Button>
-              </Radio.Group>
-            </Form.Item>
-          </Col>}
+          {currentTaskId !== 'add' && (
+            <Col span={12}>
+              <Form.Item name="status" label="状态" labelCol={{ span: 10 }}>
+                <Radio.Group>
+                  <Radio.Button value="0">启用</Radio.Button>
+                  <Radio.Button value="1">停用</Radio.Button>
+                </Radio.Group>
+              </Form.Item>
+            </Col>
+          )}
         </Row>
       </Form>
     </Modal>

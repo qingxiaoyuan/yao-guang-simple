@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 dependencies:
   '@ant-design/icons':
     specifier: ^4.8.1
@@ -44,6 +40,9 @@ dependencies:
   react:
     specifier: ^18.2.0
     version: 18.2.0
+  react-cron-select:
+    specifier: ^1.0.1
+    version: 1.0.1(ahooks@3.7.8)(antd@5.13.2)(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -187,7 +186,7 @@ packages:
       babel-plugin-import: 1.13.8
       babel-runtime-jsx-plus: 0.1.5
       classnames: 2.5.1
-      dva-core: 2.0.4(redux@4.2.1)
+      dva-core: 2.0.4(redux@3.7.2)
       dva-immer: 1.0.1(dva@2.5.0-beta.2)
       dva-loading: 3.0.24(dva-core@2.0.4)
       history: 5.3.0
@@ -4432,7 +4431,7 @@ packages:
     peerDependencies:
       react: '>=16.3.0'
     dependencies:
-      '@babel/runtime': 7.23.6
+      '@babel/runtime': 7.23.8
       hoist-non-react-statics: 3.3.2
       react: 18.1.0
       react-is: 16.13.1
@@ -4444,7 +4443,7 @@ packages:
     peerDependencies:
       react: '>=16.3.0'
     dependencies:
-      '@babel/runtime': 7.23.6
+      '@babel/runtime': 7.23.8
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
       react-is: 16.13.1
@@ -4995,7 +4994,7 @@ packages:
     dependencies:
       '@babel/core': 7.23.6
       postcss: 8.4.33
-      postcss-syntax: 0.36.2(postcss@8.4.33)
+      postcss-syntax: 0.36.2(postcss-html@0.36.0)(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5444,7 +5443,6 @@ packages:
 
   /@types/js-cookie@2.2.7:
     resolution: {integrity: sha512-aLkWa0C0vO5b4Sr798E26QgOkss68Un0bLjs7u9qxzPT5CG+8DuNTffWES58YzJs3hrVAOs1wonycqEBqNJubA==}
-    dev: true
 
   /@types/jsdom@20.0.1:
     resolution: {integrity: sha512-d0r18sZPmMQr1eG35u12FZfhIXNrnsPU/g5wvRKCUf/tOGilKKwYMYGqh33BNR6ba+2gkHw1EUiHoN3mn7E5IQ==}
@@ -5561,7 +5559,7 @@ packages:
       '@types/history': 4.7.11
       '@types/react': 18.2.48
       '@types/react-router': 5.1.20
-      redux: 3.7.2
+      redux: 4.2.1
     dev: true
 
   /@types/react-router@5.1.20:
@@ -6209,6 +6207,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -6218,6 +6217,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -6227,6 +6227,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -6236,6 +6237,7 @@ packages:
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -6316,7 +6318,7 @@ packages:
   /@umijs/history@5.3.1:
     resolution: {integrity: sha512-/e0cEGrR2bIWQD7pRl3dl9dcyRGeC9hoW0OCvUTT/hjY0EfUrkd6G8ZanVghPMpDuY5usxq9GVcvrT8KNXLWvA==}
     dependencies:
-      '@babel/runtime': 7.23.6
+      '@babel/runtime': 7.23.8
       query-string: 6.14.1
     dev: true
 
@@ -6333,7 +6335,7 @@ packages:
       eslint-plugin-react: 7.33.2(eslint@8.35.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.35.0)
       postcss: 8.4.33
-      postcss-syntax: 0.36.2(postcss@8.4.33)
+      postcss-syntax: 0.36.2(postcss-html@0.36.0)(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39)
       stylelint-config-standard: 25.0.0(stylelint@14.8.2)
     transitivePeerDependencies:
       - eslint
@@ -6361,7 +6363,7 @@ packages:
       eslint-plugin-react: 7.33.2(eslint@8.56.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.56.0)
       postcss: 8.4.33
-      postcss-syntax: 0.36.2(postcss@8.4.33)
+      postcss-syntax: 0.36.2(postcss-html@0.36.0)(postcss-less@3.1.4)(postcss-scss@2.1.1)(postcss@7.0.39)
       stylelint-config-standard: 25.0.0(stylelint@14.16.1)
     transitivePeerDependencies:
       - eslint
@@ -7097,7 +7099,6 @@ packages:
 
   /ahooks-v3-count@1.0.0:
     resolution: {integrity: sha512-V7uUvAwnimu6eh/PED4mCDjE7tokeZQLKlxg9lCTMPhN+NjsSbtdacByVlR1oluXQzD3MOw55wylDmQo4+S9ZQ==}
-    dev: true
 
   /ahooks@3.7.8(react@18.2.0):
     resolution: {integrity: sha512-e/NMlQWoCjaUtncNFIZk3FG1ImSkV/JhScQSkTqnftakRwdfZWSw6zzoWSG9OMYqPNs2MguDYBUFFC6THelWXA==}
@@ -7116,7 +7117,6 @@ packages:
       resize-observer-polyfill: 1.5.1
       screenfull: 5.2.0
       tslib: 2.6.2
-    dev: true
 
   /ajv-keywords@3.5.2(ajv@6.12.6):
     resolution: {integrity: sha512-5p6WTN0DdTGVQk6VjcEju19IgaHudalcfabD7yhDGeA6bcQnmL+CpveLJq/3hvfwd1aof6L386Ougkx6RfyMIQ==}
@@ -7752,7 +7752,7 @@ packages:
   /babel-plugin-macros@2.6.1:
     resolution: {integrity: sha512-6W2nwiXme6j1n2erPOnmRiWfObUhWH7Qw1LMi9XZy8cj+KtESu3T6asZvtk5bMQQjX8te35o7CFueiSdL/2NmQ==}
     dependencies:
-      '@babel/runtime': 7.4.5
+      '@babel/runtime': 7.23.8
       cosmiconfig: 5.2.1
       resolve: 1.22.8
     dev: true
@@ -9744,6 +9744,21 @@ packages:
     resolution: {integrity: sha512-xmtr/J63EZXBdVXNBW+QCD7p9CaE8kAo2U1faRyv3PIGcy0G3Y6IBDNtoBB/Cj3nzk/jvX0dv96Hnh1kpSnI7Q==}
     peerDependencies:
       redux: 3.x
+    dependencies:
+      '@babel/runtime': 7.23.8
+      flatten: 1.0.3
+      global: 4.4.0
+      invariant: 2.2.4
+      is-plain-object: 2.0.4
+      redux: 3.7.2
+      redux-saga: 0.16.2
+      warning: 3.0.0
+    dev: true
+
+  /dva-core@2.0.4(redux@3.7.2):
+    resolution: {integrity: sha512-Zh39llFyItu9HKXKfCZVf9UFtDTcypdAjGBew1S+wK8BGVzFpm1GPTdd6uIMeg7O6STtCvt2Qv+RwUut1GFynA==}
+    peerDependencies:
+      redux: 4.x
     dependencies:
       '@babel/runtime': 7.23.8
       flatten: 1.0.3
@@ -12395,7 +12410,6 @@ packages:
 
   /intersection-observer@0.12.2:
     resolution: {integrity: sha512-7m1vEcPCxXYI8HqnL8CKI6siDyD+eIWSwgB3DZA+ZTogxk9I4CDnj4wilt9x/+/QbHI4YG5YZNmC6458/e9Ktg==}
-    dev: true
 
   /intl-format-cache@4.3.1:
     resolution: {integrity: sha512-OEUYNA7D06agqPOYhbTkl0T8HA3QKSuwWh1HiClEnpd9vw7N+3XsQt5iZ0GUEchp5CW1fQk/tary+NsbF3yQ1Q==}
@@ -13463,7 +13477,6 @@ packages:
 
   /js-cookie@2.2.1:
     resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==}
-    dev: true
 
   /js-levenshtein@1.1.6:
     resolution: {integrity: sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==}
@@ -13785,6 +13798,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -13794,6 +13808,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -13803,6 +13818,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -13812,6 +13828,7 @@ packages:
     engines: {node: '>= 12.0.0'}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -16426,30 +16443,6 @@ packages:
       postcss-scss: 2.1.1
     dev: true
 
-  /postcss-syntax@0.36.2(postcss@8.4.33):
-    resolution: {integrity: sha512-nBRg/i7E3SOHWxF3PpF5WnJM/jQ1YpY9000OaVXlAQj6Zp/kIqJxEDWIZ67tAd7NLuk7zqN4yqe9nc0oNAOs1w==}
-    peerDependencies:
-      postcss: '>=5.0.0'
-      postcss-html: '*'
-      postcss-jsx: '*'
-      postcss-less: '*'
-      postcss-markdown: '*'
-      postcss-scss: '*'
-    peerDependenciesMeta:
-      postcss-html:
-        optional: true
-      postcss-jsx:
-        optional: true
-      postcss-less:
-        optional: true
-      postcss-markdown:
-        optional: true
-      postcss-scss:
-        optional: true
-    dependencies:
-      postcss: 8.4.33
-    dev: true
-
   /postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
     dev: true
@@ -17946,6 +17939,24 @@ packages:
       strip-json-comments: 2.0.1
     dev: true
 
+  /react-cron-select@1.0.1(ahooks@3.7.8)(antd@5.13.2)(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-s2HyUA6vVrOyEoVLX4bZhDsn0gvl8J7dbIOFZj7W+6QenEIQ6KtIb2enFbVN5ScDUt6DjKF/EkPW8CtLadEIXw==}
+    peerDependencies:
+      ahooks: ^3.0.0
+      antd: ^>=4.0.0
+      lodash: ^4.0.0
+      react: '>=16.9.0'
+      react-dom: '>=16.9.0'
+    dependencies:
+      '@ant-design/icons': 5.2.6(react-dom@18.2.0)(react@18.2.0)
+      ahooks: 3.7.8(react@18.2.0)
+      antd: 5.13.2(moment@2.30.1)(react-dom@18.2.0)(react@18.2.0)
+      classnames: 2.5.1
+      lodash: 4.17.21
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /react-dev-inspector@1.9.0(eslint@8.56.0)(react@18.2.0)(typescript@5.3.3)(webpack@5.89.0):
     resolution: {integrity: sha512-1ZlraWRrDz+NgjHwOmTAn/wWoP+6gZt46DS1mRRILlST0iKg4FO2Zj9dDcG5XPaeIIr3OGKwsX5vM6vakmaftA==}
     peerDependencies:
@@ -19117,7 +19128,6 @@ packages:
   /screenfull@5.2.0:
     resolution: {integrity: sha512-9BakfsO2aUQN2K9Fdbj87RJIEZ82Q9IGim7FqM5OsebfoFC6ZHXgDq/KvniuLTPdeM8wY2o6Dj3WQ7KeQCj3cA==}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /scroll-into-view-if-needed@2.2.31:
     resolution: {integrity: sha512-dGCXy99wZQivjmjIqihaBQNjryrz5rueJY7eHfTdyWEiR4ttYpsajb14rn9s5d4DY4EcY6+4+U/maARBXJedkA==}
@@ -21927,3 +21937,7 @@ packages:
   /zwitch@1.0.5:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

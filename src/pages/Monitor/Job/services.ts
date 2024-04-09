@@ -11,6 +11,13 @@ export const getTaskList = (params: API.PageParams) => {
   });
 };
 
+export const runTaskById = (taskParams: TaskType) => {
+  return request('/job/run', {
+    method: 'POST',
+    data: taskParams,
+  });
+};
+
 export const addTask = (taskParams: TaskType) => {
   return request('/job/add', {
     method: 'POST',
@@ -41,5 +48,24 @@ export const editTaskStatus = (taskParams: TaskType) => {
 export const deleteTask = (taskIds: string) => {
   return request(`/job/delete/${taskIds}`, {
     method: 'POST',
+  });
+};
+
+export const getTaskLogList = (params: API.PageParams) => {
+  return request('/jobLog/list', {
+    method: 'GET',
+    params,
+  });
+};
+
+export const deleteTaskLog = (taskIds: string) => {
+  return request(`/jobLog/${taskIds}`, {
+    method: 'DELETE',
+  });
+};
+
+export const deleteAllLog = () => {
+  return request('/jobLog/clean', {
+    method: 'DELETE',
   });
 };

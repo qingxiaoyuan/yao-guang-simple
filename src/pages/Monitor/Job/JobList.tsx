@@ -2,9 +2,10 @@ import { ColorButton } from '@/components';
 import { useRequest } from '@umijs/max';
 import { App, Flex, Space, Switch, Table, TableColumnsType } from 'antd';
 import React, { useState } from 'react';
-import { deleteTask, editTaskStatus, getTaskList } from './services';
+import { deleteTask, editTaskStatus, getTaskList, runTaskById } from './services';
 import { TaskType } from './types';
 import { TaskModal } from './TaskModal';
+import { JobGroupConstant } from './constant';
 
 export const JobList: React.FC = () => {
   const { message, modal } = App.useApp();
@@ -65,7 +66,15 @@ export const JobList: React.FC = () => {
         message.error(changeResult?.msg ?? '修改任务状态失败');
       }
     }
-    
+  };
+
+  const runTask = async (taskParams: TaskType) => {
+    const runResult = await runTaskById(taskParams);
+    if (runResult.code === 200) {
+      message.success('执行任务成功');
+    } else {
+      message.error(runResult?.msg ?? '执行任务失败');
+    }
   };
 
   const columns: TableColumnsType<TaskType> = [
@@ -86,6 +95,7 @@ export const JobList: React.FC = () => {
       dataIndex: 'jobGroup',
       align: 'center',
       key: 'jobGroup',
+      render: (_, record) => JobGroupConstant?.[record.jobGroup || 'DEFAULT'],
     },
     {
       title: 'cron',
@@ -99,9 +109,12 @@ export const JobList: React.FC = () => {
       align: 'center',
       key: 'status',
       render: (_, record) => (
-        <Switch checked={record.status === '0'} onClick={(checked: boolean) => {
-          handleSwitchStatus(checked, record.jobId ?? '');
-        }} />
+        <Switch
+          checked={record.status === '0'}
+          onClick={(checked: boolean) => {
+            handleSwitchStatus(checked, record.jobId ?? '');
+          }}
+        />
       ),
     },
     {
@@ -117,6 +130,13 @@ export const JobList: React.FC = () => {
       key: 'action',
       render: (_, record) => (
         <Space size="middle">
+          <a
+            onClick={() => {
+              runTask(record);
+            }}
+          >
+            执行一次
+          </a>
           <a
             onClick={() => {
               setCurrentTaskId(record?.jobId ?? '');

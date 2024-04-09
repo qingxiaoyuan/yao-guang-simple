@@ -2,7 +2,7 @@
 import type { RequestConfig } from '@umijs/max';
 import { message, notification } from 'antd';
 
-const SERVER_ADDRESS = 'http://localhost:8080';
+const SERVER_ADDRESS = 'http://192.168.18.6:8080';
 
 // 错误处理方案： 错误类型
 enum ErrorShowType {

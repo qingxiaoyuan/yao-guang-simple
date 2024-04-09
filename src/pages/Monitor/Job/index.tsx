@@ -2,6 +2,7 @@ import { PageContainer } from '@ant-design/pro-components';
 import { Card, Tabs } from 'antd';
 import React from 'react';
 import { JobList } from './JobList';
+import { JobLog } from './JobLog';
 
 const Job: React.FC = () => {
   return (
@@ -18,7 +19,7 @@ const Job: React.FC = () => {
             {
               label: '任务日志',
               key: 'log',
-              children: '日志',
+              children: <JobLog />,
             },
           ]}
         />

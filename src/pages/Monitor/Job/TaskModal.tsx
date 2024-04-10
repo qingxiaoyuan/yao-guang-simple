@@ -107,7 +107,7 @@ export const TaskModal: React.FC<TaskModalProps> = (props) => {
               rules={[{ required: true }]}
             >
               <Select placeholder="请选择">
-                {/* <Select.Option value="yaoguangTask.ryNoParams">日报提醒</Select.Option> */}
+                <Select.Option value="yaoguangTask.noticeDailyReport">日报提醒</Select.Option>
                 <Select.Option value="yaoguangTask.noticeDevReport">开发超时问题单提醒</Select.Option>
                 <Select.Option value="yaoguangTask.noticePMReport">产品超时问题单提醒</Select.Option>
               </Select>

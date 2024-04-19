@@ -36,3 +36,16 @@ export const deleteUser = (userIds: string) => {
     method: 'POST',
   });
 };
+
+export const importUsers = (form: FormData) => {
+  return request('/user/importData', {
+    method: 'POST',
+    data: form,
+  })
+};
+
+export const exportUsers = () => {
+  return request('/user/export', {
+    method: 'POST',
+  });
+};

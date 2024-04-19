@@ -6,6 +6,9 @@ export interface UserType {
   userName?: string;
   remark?: string;
   roleId?: string;
+  skipDailyReminder?: string;
+  skipIssueReminder?: string;
+  roleIds?: Array<string>;
 }
 
 export interface GetUserParmas extends API.PageParams {

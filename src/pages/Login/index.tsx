@@ -135,7 +135,7 @@ const Login: React.FC = () => {
               size: 'large',
               prefix: <UserOutlined />,
             }}
-            placeholder={'用户名'}
+            placeholder={'用户名(工号)'}
             rules={[
               {
                 required: true,
@@ -149,7 +149,7 @@ const Login: React.FC = () => {
               size: 'large',
               prefix: <LockOutlined />,
             }}
-            placeholder={'密码'}
+            placeholder={'密码(默认密码123456)'}
             rules={[
               {
                 required: true,

@@ -7,13 +7,19 @@ import { ColorButton } from '@/components';
 import { useRequest } from '@umijs/max';
 import { deleteUser, getUserList } from './services';
 import { UserModal } from './UserModal';
+import { ImportModal } from './ImportModal';
 
 const UserList: React.FC = () => {
   const { message } = App.useApp();
   const [query, setQuery] = useState<GetUserParmas>({});
   const [currentUserId, setCurrentUserId] = useState('');
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
-  const { data, loading, run: refresh } = useRequest(
+  const [importModalOpen, setImportModalOpen] = useState(false);
+  const {
+    data,
+    loading,
+    run: refresh,
+  } = useRequest(
     () => {
       return getUserList(query);
     },
@@ -77,6 +83,28 @@ const UserList: React.FC = () => {
       ),
     },
     {
+      title: '日报提醒',
+      dataIndex: 'skipDailyReminder',
+      align: 'center',
+      key: 'skipDailyReminder',
+      render: (_, record) => (
+        <Tag color={record.skipDailyReminder === '0' ? 'green' : 'red'}>
+          {record.skipDailyReminder === '0' ? '开启' : '关闭'}
+        </Tag>
+      ),
+    },
+    {
+      title: '问题单提醒',
+      dataIndex: 'skipIssueReminder',
+      align: 'center',
+      key: 'skipIssueReminder',
+      render: (_, record) => (
+        <Tag color={record.skipIssueReminder === '0' ? 'green' : 'red'}>
+          {record.skipIssueReminder === '0' ? '开启' : '关闭'}
+        </Tag>
+      ),
+    },
+    {
       title: '创建时间',
       dataIndex: 'createTime',
       align: 'center',
@@ -96,9 +124,13 @@ const UserList: React.FC = () => {
           >
             修改
           </a>
-          <a onClick={() => {
-            deleteUserData([record?.userId ?? '']);
-          }}>删除</a>
+          <a
+            onClick={() => {
+              deleteUserData([record?.userId ?? '']);
+            }}
+          >
+            删除
+          </a>
         </Space>
       ),
     },
@@ -120,7 +152,7 @@ const UserList: React.FC = () => {
     setQuery((oldValue) => ({
       ...oldValue,
       ...values,
-    }))
+    }));
   };
 
   const handleClickTopEdit = () => {
@@ -133,7 +165,7 @@ const UserList: React.FC = () => {
       return;
     }
     setCurrentUserId((selectedRowKeys?.[0] ?? '').toString());
-  }
+  };
 
   const handleClickDelete = () => {
     if (!selectedRowKeys || selectedRowKeys.length === 0) {
@@ -142,6 +174,10 @@ const UserList: React.FC = () => {
     }
     deleteUserData(selectedRowKeys as Array<string>);
   };
+
+  // const exportData = () => {
+  //   exportUsers();
+  // };
 
   return (
     <PageContainer>
@@ -154,9 +190,21 @@ const UserList: React.FC = () => {
         <Col span={24}>
           <Card bordered={false}>
             <Flex wrap="wrap" gap="small" style={{ marginBottom: 16 }}>
-              <ColorButton color="#4892f7" onClick={() => setCurrentUserId('add')}>新增</ColorButton>
-              <ColorButton color="#73d13d" onClick={handleClickTopEdit}>修改</ColorButton>
-              <ColorButton color="#ff4d4f" onClick={handleClickDelete}>删除</ColorButton>
+              <ColorButton color="#4892f7" onClick={() => setCurrentUserId('add')}>
+                新增
+              </ColorButton>
+              <ColorButton color="#73d13d" onClick={handleClickTopEdit}>
+                修改
+              </ColorButton>
+              <ColorButton color="#ff4d4f" onClick={handleClickDelete}>
+                删除
+              </ColorButton>
+              <ColorButton color="#4892f7" onClick={() => setImportModalOpen(true)}>
+                导入
+              </ColorButton>
+              {/* <ColorButton color="#73d13d" onClick={exportData}>
+                导出数据
+              </ColorButton> */}
             </Flex>
             <Table
               rowKey="userId"
@@ -176,10 +224,20 @@ const UserList: React.FC = () => {
           </Card>
         </Col>
       </Row>
-      <UserModal currentUserId={currentUserId} afterSubmit={() => {
-        setCurrentUserId('');
-        refresh();
-      }} />
+      <ImportModal
+        open={importModalOpen}
+        afterSubmit={() => {
+          setImportModalOpen(false);
+          refresh();
+        }}
+      />
+      <UserModal
+        currentUserId={currentUserId}
+        afterSubmit={() => {
+          setCurrentUserId('');
+          refresh();
+        }}
+      />
     </PageContainer>
   );
 };

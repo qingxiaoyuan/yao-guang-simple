@@ -1,4 +1,4 @@
-import { App, Col, Form, Input, Modal, Row, Select } from 'antd';
+import { App, Col, Form, Input, Modal, Radio, Row, Select } from 'antd';
 import React, { useEffect } from 'react';
 import { addUser, editUser, getUserDetail } from './services';
 
@@ -67,7 +67,7 @@ export const UserModal: React.FC<UserModalProps> = (props) => {
   return (
     <Modal
       open={!!currentUserId}
-      width={600}
+      width={700}
       title={currentUserId === 'add' ? '新增用户' : '修改用户信息'}
       onCancel={afterSubmit}
       onOk={handleSumit}
@@ -120,6 +120,22 @@ export const UserModal: React.FC<UserModalProps> = (props) => {
                 <Select.Option value="0">正常</Select.Option>
                 <Select.Option value="1">禁用</Select.Option>
               </Select>
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item name="skipDailyReminder" label="日报提醒" labelCol={{ span: 6 }}>
+              <Radio.Group>
+                <Radio.Button value="0">开启</Radio.Button>
+                <Radio.Button value="1">关闭</Radio.Button>
+              </Radio.Group>
+            </Form.Item>
+          </Col>
+          <Col span={12}>
+            <Form.Item name="skipIssueReminder" label="问题单提醒" labelCol={{ span: 6 }}>
+              <Radio.Group>
+                <Radio.Button value="0">开启</Radio.Button>
+                <Radio.Button value="1">关闭</Radio.Button>
+              </Radio.Group>
             </Form.Item>
           </Col>
           <Col span={12}>

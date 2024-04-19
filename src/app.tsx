@@ -69,7 +69,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
     },
     menu: {
       locale: false,
-      request: async (params, defaultMenuData) => {
+      request: async (_, defaultMenuData) => {
         let userRouter: MenuDataItem[] = [];
         try {
           const getRouteresResult = await getRouters();

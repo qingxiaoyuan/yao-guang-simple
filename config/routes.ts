@@ -60,6 +60,18 @@ export default [
     ],
   },
   {
+    path: '/issue-list',
+    name: '问题单看板',
+    icon: 'unorderedListOutlined',
+    component: './IssueList',
+  },
+  {
+    path: '/personal-info',
+    name: '个人中心',
+    icon: 'userOutlined',
+    component: './PersonalInfo',
+  },
+  {
     path: '/',
     redirect: '/welcome',
   },

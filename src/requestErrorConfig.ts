@@ -2,7 +2,7 @@
 import type { RequestConfig } from '@umijs/max';
 import { message, notification } from 'antd';
 
-const SERVER_ADDRESS = 'http://192.168.18.250:9999';
+export const SERVER_ADDRESS = 'http://192.168.18.250:9999';
 
 // 错误处理方案： 错误类型
 enum ErrorShowType {
